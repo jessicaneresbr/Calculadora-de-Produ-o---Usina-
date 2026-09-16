@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Produção - Usina</title>
+<style>
+body { font-family: Arial; max-width: 500px; margin: 40px auto; padding: 20px; }
+input, button { width: 100%; padding: 10px; margin: 8px 0; }
+button { background: #2e7d32; color: white; border: none; cursor: pointer; }
+.result { background: #e8f5e9; padding: 15px; margin-top: 15px; }
+</style>
+</head>
+<body>
+<h2>Calculadora de Álcool - Cana</h2>
+<label>Hectares:</label>
+<input type="number" id="hec" placeholder="Ex: 100">
+<label>Toneladas por hectare:</label>
+<input type="number" id="ton" placeholder="Ex: 80">
+<button onclick="calcular()">Calcular</button>
+<div class="result" id="res"></div>
+
+<script>
+function calcular() {
+  const hec = parseFloat(document.getElementById('hec').value);
+  const ton = parseFloat(document.getElementById('ton').value);
+  if(!hec || !ton) { alert('Preencha os dois campos'); return; }
+  const totalTon = hec * ton;
+  const litros = totalTon * 85;
+  document.getElementById('res').innerHTML =
+    `Total: ${totalTon.toLocaleString()} ton<br>Estimativa: ${litros.toLocaleString()} litros de álcool`;
+}
+</script>
+</body>
+</html>
